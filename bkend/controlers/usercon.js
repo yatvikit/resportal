@@ -36,7 +36,7 @@ let login=async(req,res)=>{
 
                 if(f)
                 {
-                    res.json({"token":jwt.sign({"uid":obj.email},"1234"),"name":obj.name,"role":obj.role})
+                    res.json({"token":jwt.sign({"uid":obj.email},"1234"),"name":obj.name,"role":obj.role,"hno":obj._id})
                 }
                 else{
                     res.json({"msg":"check pwd"})
@@ -55,7 +55,7 @@ let login=async(req,res)=>{
                       let f=await bcrypt.compare(req.body.pwd,arr[0].pwd)
                 if(f)
                 {
-                    res.json({"token":jwt.sign({"uid":arr[0].email},"1234"),"name":arr[0].name,"role":arr[0].role})
+                    res.json({"token":jwt.sign({"uid":arr[0].email},"1234"),"name":arr[0].name,"role":arr[0].role,"hno":arr[0]._id})
                 }
                 else{
                     res.json({"msg":"check pwd"})
@@ -89,6 +89,28 @@ let updmarks=async(req,res)=>{
 
     }
 }
+let gethnos=async(req,res)=>{
+    try{
+        let data=await um.find({"role":"user"},{"_id":1})
+        res.json(data)
+
+    }
+    catch
+    {
+        res.json({"msg":"error fetching hno"})
+    }
+}
+
+let userdet=async(req,res)=>{
+    try{
+        let obj=await um.findById(req.params.hno)
+        res.json(obj)
+
+    }
+    catch{
+        res.json({"msg":"error fetching det based on hno"})
+    }
+}
 
 
-module.exports={addstd,login,updmarks}
+module.exports={addstd,login,updmarks,userdet,gethnos}
