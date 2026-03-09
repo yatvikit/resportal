@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Ct from './Ct.Jsx'
+import './Nav.css'
 
 const Nav = () => {
     let obj=useContext(Ct)

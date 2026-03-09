@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom'
 import Nav from './comp/Nav'
 import Login from './comp/Login'
 import Reg from './comp/Reg.Jsx'
@@ -6,14 +6,26 @@ import Logout from './comp/Logout'
 import Disp from './comp/Disp'
 import Dispmarks from './comp/Dispmarks'
 import Addmarks from './comp/Addmarks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Ct from './comp/Ct.Jsx'
+import './App.css'
+import Cookies from 'js-cookie'
 
 const App = () => {
-  let [state,setState]=useState({"token":"fghfg","hno":"","name":"","role":"admin"})
+  let [state,setState]=useState({"token":"","hno":"","name":"","role":""})
   let updstate=(obj)=>{
     setState({...state,...obj})
   }
+  
+  useEffect(()=>{
+    let x=Cookies.get("lgdet")
+    if(x!=undefined)
+    {
+      updstate(JSON.parse(x))
+      
+    }
+
+  },[])
   let obj={"state":state,"updstate":updstate}
   return (
     <BrowserRouter>

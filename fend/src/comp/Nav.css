@@ -1,0 +1,16 @@
+.nav{
+    background: purple;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+}
+a{
+    color: white;
+    text-decoration: none;
+    transition: all linear 500ms;
+}
+a:hover{
+    color: yellow;
+}
