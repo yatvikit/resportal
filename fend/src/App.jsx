@@ -37,7 +37,7 @@ const App = () => {
       <Route path='/logout' element={<Logout/>}/>
       <Route path="/disp" element={<Disp/>}/>
       <Route path='/search' element={<Dispmarks/>}/>
-      <Route path="/addmarks" element={<Addmarks/>}/>
+      <Route path="/addmarks/:hno" element={<Addmarks/>}/>
     </Routes>
     </Ct.Provider>
     </BrowserRouter>

@@ -14,7 +14,7 @@ const Nav = () => {
      </>:<>
      {obj.state.role=="user"?<Link to="/search">Search</Link>:<>
      <Link to="/disp">Disp</Link>
-     <Link to="/addmarks">AddMarks</Link></>}
+     <Link to="/addmarks/''">AddMarks</Link></>}
      <Link to="/logout">Logout</Link>
      </>}   
 

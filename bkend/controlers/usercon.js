@@ -112,5 +112,17 @@ let userdet=async(req,res)=>{
     }
 }
 
+let getusers=async(req,res)=>{
+    try{
+        let data=await um.find({"role":"user"},{"pwd":0})
+        res.json(data)
 
-module.exports={addstd,login,updmarks,userdet,gethnos}
+    }
+    catch
+    {
+        res.json({"msg":"error fetching data"})
+    }
+}
+
+
+module.exports={addstd,login,updmarks,userdet,gethnos,getusers}
